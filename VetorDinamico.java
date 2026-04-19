@@ -17,6 +17,14 @@ public class VetorDinamico {
         this(4);
     }
 
+    public int getOcupacao(){
+        return ocupacao;
+    }
+
+    public Processo[] getDados() {
+        return dados;
+    }
+
     public int getCapacidade() {
         return capacidade;
     }

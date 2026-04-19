@@ -57,5 +57,8 @@ public class Teste {
         //Método equals próprio da classe
         System.out.println(processo10.equals(processo10));
 
+        MenuCentralAtendimento menuCentralAtendimento = new MenuCentralAtendimento();
+
+        menuCentralAtendimento.exibirMenuCentralAtendimento();
     }
 }
