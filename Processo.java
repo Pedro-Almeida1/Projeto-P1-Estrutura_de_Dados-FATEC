@@ -1,5 +1,6 @@
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Processo {
 
@@ -9,7 +10,7 @@ public class Processo {
     private int prioridade;
     private String dataHora;
     private static int cont = 001;
-
+     
     @Override
     public String toString() {
         String nivelPrioridade;
@@ -30,12 +31,13 @@ public class Processo {
         return "[" + protocolo + "] " + getSolicitante() + " | " + getTipoServico() + " | " + nivelPrioridade  + " | " + getDataHora();
     }
 
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
     public Processo(String solicitante, String tipoServico, int prioridade) {
         this.protocolo = cont++;
         this.solicitante = solicitante;
         this.tipoServico = tipoServico;
         this.prioridade = prioridade;
-        this.dataHora = LocalDateTime.now().toString();
+        this.dataHora = LocalDateTime.now().format(formatter);
     }
 
     public int getProtocolo() {
@@ -72,5 +74,9 @@ public class Processo {
 
     public void setDataHora(String dataHora) {
         this.dataHora = dataHora;
+    }
+
+    public boolean equals(Processo p){
+        return p.getProtocolo() == getProtocolo();
     }
 }
