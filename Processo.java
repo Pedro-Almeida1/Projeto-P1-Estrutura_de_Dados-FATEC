@@ -23,7 +23,7 @@ public class Processo {
                 nivelPrioridade = "Média";
                 break;
             case 3:
-                nivelPrioridade = "Normal";
+                nivelPrioridade = "Urgente";
                 break;
             default:
                 throw new AssertionError();

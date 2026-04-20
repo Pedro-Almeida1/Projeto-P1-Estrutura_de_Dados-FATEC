@@ -8,8 +8,7 @@ public class MenuCentralAtendimento {
 
     public void exibirMenuCentralAtendimento() {
         int opcao = 0;
-        while (opcao != 6) {
-            System.out.println("""
+        System.out.println("""
                 --- BEM VINDO A CENTRAL DE ATENDIMENTO ---
                 Opções:
                 1: Abrir processo
@@ -20,6 +19,8 @@ public class MenuCentralAtendimento {
 
                 6: Sair
                 """);
+        while (opcao != 6) {
+
             opcao = scanner.nextInt();
 
             switch (opcao) {
@@ -38,18 +39,23 @@ public class MenuCentralAtendimento {
                 case 5:
                     centralAtendimento.listarHistorico();
                     break;
-
-                default:
-                    System.out.println("Opção não encontrada");
             }
+            System.out.println("""
+                
+                1: Abrir processo
+                2: Atender Próximo
+                3: Desfazer Último Atendimento
+                4: Listar Próximos
+                5: Listar Histórico
 
+                6: Sair
+                """);
         }
     }
     // private static void desfazerUltimoAtendimento(CentralAtendimento centralAtendimento){
     //     Processo ultimoAtendido = centralAtendimento.
 
     // }
-
     // private static void atenderProximo(CentralAtendimento centralAtendimento) {
     //     try {
     //        Processo proximo = centralAtendimento.atendimentosPendentes.peek();
@@ -58,7 +64,6 @@ public class MenuCentralAtendimento {
     //         e.getMessage();
     //     }
     // }
-
     private static void criarProcesso(Scanner scanner, CentralAtendimento centralAtendimento) {
         try {
             scanner.nextLine();
@@ -68,7 +73,6 @@ public class MenuCentralAtendimento {
             String tipoServico = scanner.nextLine();
             System.out.print("Prioridade: ");
             int prioridade = scanner.nextInt();
-           
 
             Processo processo = new Processo(solicitante, tipoServico, prioridade);
             centralAtendimento.abrirProcesso(processo);

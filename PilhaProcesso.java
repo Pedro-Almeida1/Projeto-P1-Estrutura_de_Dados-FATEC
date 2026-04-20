@@ -3,8 +3,6 @@ public class PilhaProcesso {
 
     private VetorDinamico vetorDinamico = new VetorDinamico();
 
-    
-
     public void push(Processo processo) {
         vetorDinamico.adicionar(processo);
     }
@@ -20,12 +18,20 @@ public class PilhaProcesso {
         if (vetorDinamico.estaVazio()) {
             throw new PilhaVaziaException("A pilha está vazia não há nada a retornar!");
         }
-        return vetorDinamico.getDados()[vetorDinamico.getOcupacao()-1];
+        return vetorDinamico.getDados()[vetorDinamico.getOcupacao() - 1];
     }
 
-    public void imprimir(){
+    public void imprimir() {
         for (int i = vetorDinamico.getOcupacao(); i > 0; i--) {
             System.out.println(vetorDinamico.getDados()[i]);
         }
+    }
+
+    public boolean estaVazio() {
+        return vetorDinamico.estaVazio();
+    }
+
+    public int quantidade(){
+        return vetorDinamico.getOcupacao();
     }
 }

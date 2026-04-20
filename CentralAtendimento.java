@@ -1,6 +1,6 @@
 public class CentralAtendimento {
-    public PilhaProcesso atendimentosPendentes = new PilhaProcesso(); //principal
-    public PilhaProcesso historicoParaDesfazer = new PilhaProcesso(); //auxiliar
+    public PilhaProcesso atendimentosPendentes = new PilhaPrioridade(); //principal
+    public PilhaProcesso historicoParaDesfazer = new PilhaPrioridade(); //auxiliar
 
     public void abrirProcesso (Processo p) {
         atendimentosPendentes.push(p);
@@ -8,21 +8,21 @@ public class CentralAtendimento {
     }
 
     private void limpar(){
-        PilhaProcesso historicoParaDesfazer = new PilhaProcesso();
+        PilhaProcesso historicoParaDesfazer = new PilhaPrioridade();
     }
 
     public void atenderProximo(){
         Processo tempProcesso = atendimentosPendentes.peek();
-        atendimentosPendentes.pop();
         historicoParaDesfazer.push(tempProcesso);
         System.out.println(tempProcesso);
+        atendimentosPendentes.pop();
     }
 
     public void desfazerUltimoAtendimento(){
         Processo tempProcesso = historicoParaDesfazer.peek();
-        historicoParaDesfazer.pop();
         atendimentosPendentes.push(tempProcesso);
         System.out.println(tempProcesso);
+        historicoParaDesfazer.pop();
     }
 
     public void listarPendentes(){
